@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan Spesial</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color:pink;
+        }
+  
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .container {
+            background:pink;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 2s;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #f76c6c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff4d4d;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes floatUp {
+            from {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-10vh) scale(1);
+                opacity: 1;
+            }
+        }
+        .heart {
+            position: absolute;
+            color: #ff4d4d;
+            font-size: 2em;
+            animation: floatUp 5s linear infinite;
+        }
+        .heart span {
+            margin-left: 5px;
+            font-size: 0.5em;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>Pesan Gawe Pean Seng Ter L❤️P² </h1>
+        <p id="message">Klik tombol di bawah untuk melihat pesanne.</p>
+        <button onclick="showMessage()">Tampilkan Pesan</button>
+    </div>
+  
+  <audio id="backgroundAudio" loop>
+        <source src="Lagu.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+  
+
+    <script>
+        function showMessage() {
+            document.getElementById('message').innerText = 'Awakmu Istimewa dan Berarti Pol Yang 🫂 , Intine I Lope You Mbak Syillah, Suwun Wes Onok';
+            createHearts();
+            playAudio();
+        }
+
+        function createHearts() {
+            const background = document.querySelector('.background');
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '🩶<span>Syillah</span>';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    background.appendChild(heart);
+
+                    // Remove heart after animation ends
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5000);
+                }, i * 500);
+            }
+        }
+  function playAudio() {
+            const audio = document.getElementById('backgroundAudio');
+            audio.play();
+        }
+
+        setInterval(createHearts, 5000);
+    </script>
+</body>
+</html>
